@@ -32,10 +32,10 @@ userSQLRoutes.post('/createUser', async (req, res)=>{
     try{
          const user ={
                    // id:req.body.id_usuario,
-                    nombre : req.body.nombre_usuario,
-                    password : req.body./*bcrypt.hashSync(req.body.password,10), //req.body.*/password, 
-                    email : req.body.email_usuario,
-                    telefono : req.body.telefono,
+                    nombre:req.body.nombre_usuario,
+                    password:req.body./*bcrypt.hashSync(req.body.password,10), //req.body.*/password, 
+                    email:req.body.email_usuario,
+                    telefono:req.body.telefono,
                     estado:req.body.estado
                 } 
             let validacioncontraseña =bcrypt.hashSync(user.password,10)
@@ -46,8 +46,8 @@ userSQLRoutes.post('/createUser', async (req, res)=>{
                 const cargadeusuario ="INSERT INTO USUARIOS1(NOMBRE_USUARIO,PASSWORD,EMAIL_USUARIO,TELEFONO,ESTADO)VALUES(?,?,?,?,?)";
                 await query(pasajededatos,[])
                 await query(cargadeusuario, [user.nombre,user.password/*validacioncontraseña*/,user.email,user.telefono,user.estado])
-                const emailEnvio = new emailClass()
-                const envio = await emailEnvio.enviarEmail(user.email, "Creacion cuenta", "Su cuenta se ha creado con exito", "");
+                //const emailEnvio = new emailClass()
+                //const envio = await emailEnvio.enviarEmail(user.email, "Creacion cuenta", "Su cuenta se ha creado con exito", "");
 
                 let commit = await query("commit",[])
                 res.json({
