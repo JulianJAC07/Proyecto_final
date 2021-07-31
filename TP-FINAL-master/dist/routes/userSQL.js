@@ -44,8 +44,8 @@ userSQLRoutes.post('/createUser', (req, res) => __awaiter(void 0, void 0, void 0
             const cargadeusuario = "INSERT INTO USUARIOS1(NOMBRE_USUARIO,PASSWORD,EMAIL_USUARIO,TELEFONO,ESTADO)VALUES(?,?,?,?,?)";
             yield promesas_1.default(pasajededatos, []);
             yield promesas_1.default(cargadeusuario, [user.nombre, user.password /*validacioncontraseña*/, user.email, user.telefono, user.estado]);
-            const emailEnvio = new email_1.default();
-            const envio = yield emailEnvio.enviarEmail(user.email, "Creacion cuenta", "Su cuenta se ha creado con exito", "");
+            //const emailEnvio = new email_1.default();
+            //const envio = yield emailEnvio.enviarEmail(user.email, "Creacion cuenta", "Su cuenta se ha creado con exito", "");
             let commit = yield promesas_1.default("commit", []);
             res.json({
                 estado: "Success",
